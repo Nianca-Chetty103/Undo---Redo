@@ -24,7 +24,7 @@ public class UndoAndRedo {
         redoStack = new Stack<>();
     }
     
-    public String undo(int steps){
+    public String undo(int steps){ //undo functionality of the program
         StringBuilder function = new StringBuilder();
         for(int i = 1; i <= steps && !undoStack.isEmpty(); i++){
             String perform = undoStack.pop();
@@ -32,14 +32,14 @@ public class UndoAndRedo {
             function.append("Undo action " + i + ":" + perform);
         }
         
-        if (function.length() == 0){
+        if (function.length() == 0){ ///ensures that when zero its not tasked to undo any tasks.
             return "Nothing to undo";
         }else {
             return function.toString();
         }
     }
     
-    public String redo(int steps){
+    public String redo(int steps){ // redo functionality of the program
         StringBuilder function = new StringBuilder();
         for(int i = 1; i <= steps && !redoStack.isEmpty(); i++){
             String perform = redoStack.pop();
@@ -47,7 +47,7 @@ public class UndoAndRedo {
             function.append("Redo action " + i + ":" + perform);
         }
         
-        if (function.length() == 0){
+        if (function.length() == 0){ ///ensures theres nothing is left to redo or if its not tasked to redo anything.
             return "Nothing to redo";
         }else {
             return function.toString();
@@ -76,4 +76,5 @@ public class UndoAndRedo {
         System.out.println(action.undo(6));
         System.out.println(action.redo(2));
     }
+
 }
